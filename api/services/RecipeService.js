@@ -6,7 +6,7 @@ module.exports = {
 		});
 	},
 	addRecipe: function(recipeVal, next) {
-		Recipe.create({name: recipeVal}).exec(function(err, recipe) {
+		Recipe.create(recipeVal).exec(function(err, recipe) {
 			if(err) throw err;
 			next(recipe);
 		});

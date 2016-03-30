@@ -12,14 +12,18 @@ module.exports = {
 		});
 	},
 	addRecipe: function(req, res) {
-		var recipeVal = (req.param.name) ? req.param.name : undefined
-			RecipeService.addRecipe(recipeVal, function(success) {
+		var recipeVal = {
+			name: (req.body.name) ? req.body.name : undefined,
+			classification: (req.body.classification) ? req.body.classification : undefined,
+			content: (req.body.content) ? req.body.content : undefined,
+		};
+		RecipeService.addRecipe(recipeVal, function(success) {
 			res.json(success);
 		});
 	},
 	removeRecipe: function(req, res) {
-		var recipeVal = (req.param.name) ? req.param.name : undefined
-			RecipeService.removeRecipe(recipeVal, function(success) {
+		var recipeVal = (req.param.name) ? req.param.name : undefined;
+		RecipeService.removeRecipe(recipeVal, function(success) {
 			res.json(success);
 		});
 	}

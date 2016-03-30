@@ -1,20 +1,51 @@
 <div class="container" ng-controller="RecipeController as recipe">
-	<div class="jumbotron">
+	<div class="row">
 		<h1 align="center">Recipe Application</h1>
-		<br>
 		<div id="recipe-form" class="row">
-			<div class="col-sm-8 col-sm-offset-2 text-center">
+			<div class="card teal lighten-4">
+				<div class="card-content">
+				<form ng-submit="addRecipe()">
+					<div class="row">
+						<div class="input-field col s12">
+							<input id="name" ng-model="name" type="text" class="validate">
+							<label for="name">Recipe Name</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s12">
+							<input id="classification" ng-model="classification" type="text" class="validate">
+						<label for="classification">Classification</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s12">
+							<textarea id="content" ng-model="content" type="textarea" class="materialize-textarea"></textarea>
+							<label for="content">Content</label>
+						</div>
+					</div>
+					<input type="submit" id="submit" value="submit" class="waves-effect waves-light btn">
+				</form>
 			</div>
 		</div>
 	</div>
 	<div id="recipe-list" class="row">
 		<div class="col-sm-4 col-sm-offset-4">
-			<div class="checkbox" ng-repeat="singleRecipe in recipe">
-				<label>
-					<input type="checkbox" ng-click="recipe.removeRecipe(singleRecipe)">
-					{{ singleRecipe.name }}
-				</label>
+			<div class="checkbox" ng-repeat="singleRecipe in recipes">
+				<div class="card teal lighten-4">
+					<div class="card-content">
+						<h3>Recipe Name: {{ singleRecipe.name }}<h3>
+						<h6>Classification: {{ singleRecipe.classification }}<h6>
+						<h6>Content:<h6>
+						<p>{{ singleRecipe.content }}</p>
+						<a style="cursor:pointer" ng-click="removeRecipe(singleRecipe)" class="red-text">Remove</a>
+					</div>
+				</div>
 			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-4 col-sm-offset-4">
+			<a class="waves-effect waves-light btn" type="button" href="/">Logout</a>
 		</div>
 	</div>
 </div>

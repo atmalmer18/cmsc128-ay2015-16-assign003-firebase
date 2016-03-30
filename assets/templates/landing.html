@@ -1,0 +1,25 @@
+<div class="container" ng-controller="HomeController as home">
+	<div class="row">
+		<h1 align="center">WELCOME USER</h1>
+		<div id="home-form" class="row">
+			<div class="card teal lighten-4">
+				<div class="card-content">
+				<form action="/recipePage">
+					<div class="row">
+						<div class="input-field col s12">
+							<input id="username" ng-model="username" type="text" class="validate" placeholder="" value="admin">
+							<label class="active" for="username">Username</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s12">
+							<input id="password" ng-model="password" type="password" class="validate" placeholder="" value="admin">
+							<label class="active" for="password">Password</label>
+						</div>
+					</div>
+					<input type="submit" id="submit" value="submit" class="waves-effect waves-light btn">
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

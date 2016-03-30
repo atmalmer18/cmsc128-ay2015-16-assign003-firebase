@@ -7,14 +7,24 @@ recipeApp.config(function($stateProvider, $urlRouterProvider, $locationProvider)
 	$urlRouterProvider.otherwise('/notFound');
 
 	// Routes
-	$stateProvider.state('recipe', {
+	$stateProvider.state('home', {
 		url			: '/',
+		templateUrl	: "templates/landing.html",
+		controller	: 'HomeController'
+	});
+	
+	$stateProvider.state('recipe', {
+		url			: '/recipePage',
 		templateUrl	: "templates/recipe.html",
 		controller	: 'RecipeController'
 	});
 
 	// Use HTML5 history API
 	$locationProvider.html5Mode(true);
+});
+
+recipeApp.controller('RecipeController', function($scope, $rootScope, RecipeService) {
+	
 });
 
 recipeApp.controller('RecipeController', function($scope, $rootScope, RecipeService) {
@@ -26,8 +36,13 @@ recipeApp.controller('RecipeController', function($scope, $rootScope, RecipeServ
 	});
 
 	$scope.addRecipe = function() {
+		$scope.formData = {
+			name: $scope.name,
+			classification: $scope.classification,
+			content: $scope.content,
+		};
 		RecipeService.addRecipe($scope.formData).then(function(response) {
-			$scope.recipes.push($scope.formData)
+			$scope.recipes.push($scope.formData);
 			$scope.formData = {};
 		});
 	}

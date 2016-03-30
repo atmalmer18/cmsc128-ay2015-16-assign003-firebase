@@ -35,6 +35,7 @@ var jsFilesToInject = [
   'bower_components/angular-route/angular-route.js',
   'bower_components/Materialize/bin/materialize.js',
 
+  'js/dependencies/jquery.js',
   'js/dependencies/angular.js',
   'js/dependencies/angular-route.js',
   'js/dependencies/angular-ui-router.js',
