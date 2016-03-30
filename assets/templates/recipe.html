@@ -1,0 +1,20 @@
+<div class="container" ng-controller="RecipeController as recipe">
+	<div class="jumbotron">
+		<h1 align="center">Recipe Application</h1>
+		<br>
+		<div id="recipe-form" class="row">
+			<div class="col-sm-8 col-sm-offset-2 text-center">
+			</div>
+		</div>
+	</div>
+	<div id="recipe-list" class="row">
+		<div class="col-sm-4 col-sm-offset-4">
+			<div class="checkbox" ng-repeat="singleRecipe in recipe">
+				<label>
+					<input type="checkbox" ng-click="recipe.removeRecipe(singleRecipe)">
+					{{ singleRecipe.name }}
+				</label>
+			</div>
+		</div>
+	</div>
+</div>
