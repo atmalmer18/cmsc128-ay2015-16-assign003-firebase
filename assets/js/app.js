@@ -41,12 +41,12 @@ recipeApp.controller('RecipeController', function($scope, $rootScope, RecipeServ
 			classification: $scope.classification,
 			content: $scope.content,
 		};
+		$scope.recipes.push({
+			name: $scope.name,
+			classification: $scope.classification,
+			content: $scope.content,
+		});
 		RecipeService.addRecipe($scope.formData).then(function(response) {
-			$scope.recipes.push({
-				name: $scope.name,
-				classification: $scope.classification,
-				content: $scope.content,
-			});
 			$scope.formData = {};
 		});
 	}
