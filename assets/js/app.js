@@ -23,7 +23,7 @@ recipeApp.config(function($stateProvider, $urlRouterProvider, $locationProvider)
 	$locationProvider.html5Mode(true);
 });
 
-recipeApp.controller('RecipeController', function($scope, $rootScope, RecipeService) {
+recipeApp.controller('HomeController', function($scope, $rootScope, RecipeService) {
 	
 });
 
@@ -42,7 +42,11 @@ recipeApp.controller('RecipeController', function($scope, $rootScope, RecipeServ
 			content: $scope.content,
 		};
 		RecipeService.addRecipe($scope.formData).then(function(response) {
-			$scope.recipes.push($scope.formData);
+			$scope.recipes.push({
+				name: $scope.name,
+				classification: $scope.classification,
+				content: $scope.content,
+			});
 			$scope.formData = {};
 		});
 	}

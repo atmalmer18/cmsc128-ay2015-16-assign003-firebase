@@ -5,10 +5,16 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
+var Firebase = require("firebase");
+var ref = new Firebase("https://laziz.firebaseio.com/web/saving-data/fireblog");
+
 module.exports = {
 	getRecipes: function(req, res) {
-		RecipeService.getRecipes(function(recipes) {
-			res.json(recipes);
+		ref.child("recipe").orderByKey().on("value", function(snapshot) {
+			RecipeService.getRecipes(function(recipes) {
+				recipes = snapshot.key();
+				res.json(snapshot.key);
+			});
 		});
 	},
 	addRecipe: function(req, res) {
@@ -17,6 +23,10 @@ module.exports = {
 			classification: (req.body.classification) ? req.body.classification : undefined,
 			content: (req.body.content) ? req.body.content : undefined,
 		};
+		var usersRef = ref.child("recipe");
+		usersRef.set({
+			recipeVal
+		});
 		RecipeService.addRecipe(recipeVal, function(success) {
 			res.json(success);
 		});
